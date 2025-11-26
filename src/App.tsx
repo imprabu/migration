@@ -1,6 +1,23 @@
 import React, { useState, useRef } from 'react';
 import { ChevronRight, ChevronLeft, Check, Download, Upload, RotateCcw, FileJson } from 'lucide-react';
 
+type Question = {
+  id: string;
+  label: string;
+  type: 'text' | 'date' | 'textarea' | 'radio';
+  required: boolean;
+  options?: string[];
+};
+
+type Stage = {
+  name: string;
+  color: string;
+  responsible: string;
+  skippable?: boolean;
+  skipCondition?: { questionId: string; value: string };
+  questions: Question[];
+};
+
 const MigrationQuestionnaireApp = () => {
   const [currentStage, setCurrentStage] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -8,7 +25,7 @@ const MigrationQuestionnaireApp = () => {
   const [showStartPage, setShowStartPage] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const stages = [
+  const stages: Stage[] = [
     {
       name: "Story Creation & Open",
       color: "bg-purple-600",
@@ -145,7 +162,7 @@ const MigrationQuestionnaireApp = () => {
 
   const isStageSkipped = (stageIndex: number) => {
     const stage = stages[stageIndex];
-    if (!stage.skippable) return false;
+    if (!stage.skippable || !stage.skipCondition) return false;
     
     const skipCondition = stage.skipCondition;
     const questionId = skipCondition.questionId;
@@ -575,7 +592,7 @@ const MigrationQuestionnaireApp = () => {
 
                 {question.type === 'radio' && question.options && (
                   <div className="space-y-2">
-                    {question.options.map((option) => (
+                    {(question.options as string[]).map((option) => (
                       <label key={option} className="flex items-center space-x-3 cursor-pointer hover:bg-gray-50 p-2 rounded">
                         <input
                           type="radio"
