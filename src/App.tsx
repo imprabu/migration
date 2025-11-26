@@ -567,13 +567,13 @@ const MigrationQuestionnaireApp = () => {
                 {question.type === 'textarea' && (
                   <textarea
                     className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    rows="4"
+                    rows={4}
                     value={answers[question.id] || ''}
                     onChange={(e) => handleInputChange(question.id, e.target.value)}
                   ></textarea>
                 )}
 
-                {question.type === 'radio' && (
+                {question.type === 'radio' && question.options && (
                   <div className="space-y-2">
                     {question.options.map((option) => (
                       <label key={option} className="flex items-center space-x-3 cursor-pointer hover:bg-gray-50 p-2 rounded">
