@@ -34,7 +34,7 @@ const MigrationQuestionnaireApp = () => {
         { id: "parent_id", label: "Parent ID (FR Ticket ID - Epic/Story only)", type: "text", required: true },
         { id: "related_story", label: "Related User Story Link", type: "text", required: true },
         { id: "end_date", label: "Realistic End Date", type: "date", required: true },
-        { id: "cohorts_buckets", label: "Define Cohorts and Bucketings", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "cohorts_buckets", label: "Define Cohorts and Bucketings", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "tech_doc_link", label: "Detailed Plan Tech Doc Link", type: "text", required: true },
         { id: "assignee", label: "Assigned Developer", type: "text", required: true }
       ]
@@ -46,13 +46,13 @@ const MigrationQuestionnaireApp = () => {
       questions: [
         { id: "downstream_systems", label: "Impacted Downstream Systems (e.g., analytics, marketplace)", type: "text", required: true },
         { id: "functional_area", label: "Core Functional Area (e.g., ITSM, ESM)", type: "text", required: true },
-        { id: "is_pre_migration", label: "Is Pre Migration?", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "is_pre_migration", label: "Is Pre Migration?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "validation_script", label: "Validation Script (Post-migration verification)", type: "textarea", required: true },
         { id: "staging_script_url", label: "Staging Script URL", type: "textarea", required: true },
         { id: "dry_run_script", label: "Dry Run Script", type: "textarea", required: false },
         { id: "rollback_script", label: "Rollback Script", type: "textarea", required: true },
-        { id: "pause_stop_logic", label: "Pause/Stop Logic", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "central_topic_required", label: "New Central Topic Required?", type: "radio", options: ["Yes", "No"], required: true }
+        { id: "pause_stop_logic", label: "Pause/Stop Logic", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "central_topic_required", label: "New Central Topic Required?", type: "radio", options: ["Yes", "No", "NA"], required: true }
       ]
     },
     {
@@ -60,11 +60,11 @@ const MigrationQuestionnaireApp = () => {
       color: "bg-pink-500",
       responsible: "Technical Architect",
       questions: [
-        { id: "rollback_validated", label: "Rollback Script Validated?", type: "radio", options: ["Yes", "No", "Needs Revision"], required: true },
-        { id: "validation_reviewed", label: "Validation Script Reviewed?", type: "radio", options: ["Approved", "Needs Changes"], required: true },
-        { id: "dry_run_approved", label: "Dry Run Script Approved?", type: "radio", options: ["Approved", "Needs Changes"], required: false },
-        { id: "dry_run_executed", label: "Dry Run Execution Verified?", type: "radio", options: ["Yes", "No"], required: false },
-        { id: "stop_pause_validated", label: "Stop/Pause Logic Validated?", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "rollback_validated", label: "Rollback Script Validated?", type: "radio", options: ["Yes", "No", "Needs Revision", "NA"], required: true },
+        { id: "validation_reviewed", label: "Validation Script Reviewed?", type: "radio", options: ["Approved", "Needs Changes", "NA"], required: true },
+        { id: "dry_run_approved", label: "Dry Run Script Approved?", type: "radio", options: ["Approved", "Needs Changes", "NA"], required: false },
+        { id: "dry_run_executed", label: "Dry Run Execution Verified?", type: "radio", options: ["Yes", "No", "NA"], required: false },
+        { id: "stop_pause_validated", label: "Stop/Pause Logic Validated?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "pm_review_needed", label: "PM Review Required?", type: "radio", options: ["Yes", "No"], required: true },
         { id: "sre_review_needed", label: "Is SRE Review Required?", type: "radio", options: ["Yes", "No"], required: true },
         { id: "tech_arch_comments", label: "Technical Architecture Comments", type: "textarea", required: false }
@@ -77,12 +77,12 @@ const MigrationQuestionnaireApp = () => {
       skippable: true,
       skipCondition: { questionId: "pm_review_needed", value: "No" },
       questions: [
-        { id: "downstream_verified", label: "Downstream Systems Verified?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "functional_area_validated", label: "Core Functional Area Validated?", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "downstream_verified", label: "Downstream Systems Verified?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "functional_area_validated", label: "Core Functional Area Validated?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "communication_plan", label: "GTM/Customer/Stakeholder Communication Plan", type: "textarea", required: true },
         { id: "validation_approach", label: "Validation Approaches Reviewed", type: "textarea", required: true },
         { id: "business_impact", label: "Business Impact Assessment", type: "textarea", required: true },
-        { id: "pm_approval", label: "PM Approval Status", type: "radio", options: ["Approved", "Needs Revision"], required: true }
+        { id: "pm_approval", label: "PM Approval Status", type: "radio", options: ["Approved", "Needs Revision", "NA"], required: true }
       ]
     },
     {
@@ -97,7 +97,7 @@ const MigrationQuestionnaireApp = () => {
         { id: "alerting_setup", label: "Alerting Systems Setup?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "risk_reviewed", label: "Risk Assessment Reviewed?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "rollback_plans_reviewed", label: "Rollback Plans Reviewed?", type: "radio", options: ["Yes", "No", "NA"], required: true },
-        { id: "sre_approval", label: "SRE Approval Status", type: "radio", options: ["Approved", "Needs Revision"], required: true }
+        { id: "sre_approval", label: "SRE Approval Status", type: "radio", options: ["Approved", "Needs Revision", "NA"], required: true }
       ]
     },
     {
@@ -105,14 +105,14 @@ const MigrationQuestionnaireApp = () => {
       color: "bg-orange-400",
       responsible: "QA Engineer",
       questions: [
-        { id: "migration_scripts_tested", label: "All Migration Scripts Tested?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "rollback_procedures_validated", label: "Rollback Procedures Validated?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "dry_run_validation", label: "Dry Run Validation Executed?", type: "radio", options: ["Pass", "Fail"], required: false },
-        { id: "stop_pause_tested", label: "Stop/Pause Functionality Tested?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "pre_migration_checks", label: "Pre-migration Checks Verified?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "post_migration_validated", label: "Post-migration Scripts Validated?", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "migration_scripts_tested", label: "All Migration Scripts Tested?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "rollback_procedures_validated", label: "Rollback Procedures Validated?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "dry_run_validation", label: "Dry Run Validation Executed?", type: "radio", options: ["Pass", "Fail", "NA"], required: false },
+        { id: "stop_pause_tested", label: "Stop/Pause Functionality Tested?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "pre_migration_checks", label: "Pre-migration Checks Verified?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "post_migration_validated", label: "Post-migration Scripts Validated?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "test_results", label: "Test Results Documentation", type: "textarea", required: true },
-        { id: "monitoring_confirmed", label: "Monitoring Setup Confirmed?", type: "radio", options: ["Yes", "No"], required: false }
+        { id: "monitoring_confirmed", label: "Monitoring Setup Confirmed?", type: "radio", options: ["Yes", "No", "NA"], required: false }
       ]
     },
     {
@@ -120,12 +120,12 @@ const MigrationQuestionnaireApp = () => {
       color: "bg-pink-400",
       responsible: "Developer or QA",
       questions: [
-        { id: "staging_migration_status", label: "Staging Migration Execution Status", type: "radio", options: ["Completed", "In Progress", "Failed"], required: true },
+        { id: "staging_migration_status", label: "Staging Migration Execution Status", type: "radio", options: ["Completed", "In Progress", "Failed", "NA"], required: true },
         { id: "staging_performance", label: "Staging Performance Monitoring Results", type: "textarea", required: false },
         { id: "staging_validation_results", label: "Post-migration Validation in Staging", type: "textarea", required: true },
-        { id: "verified_in_staging", label: "Verified in Staging?", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "verified_in_staging", label: "Verified in Staging?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "staging_issues", label: "Document Staging Issues/Deviations", type: "textarea", required: false },
-        { id: "rollback_validated_staging", label: "Rollback Procedures Validated in Staging?", type: "radio", options: ["Yes", "No"], required: true },
+        { id: "rollback_validated_staging", label: "Rollback Procedures Validated in Staging?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "production_script_urls", label: "Production Script URLs (US/INDIA/EU/MEA/ANZ)", type: "textarea", required: true }
       ]
     },
@@ -134,7 +134,7 @@ const MigrationQuestionnaireApp = () => {
       color: "bg-red-500",
       responsible: "Developer or QA",
       questions: [
-        { id: "prod_migration_status", label: "Production Migration Execution Status", type: "radio", options: ["Completed", "In Progress", "Failed"], required: true },
+        { id: "prod_migration_status", label: "Production Migration Execution Status", type: "radio", options: ["Completed", "In Progress", "Failed", "NA"], required: true },
         { id: "supreme_one_links", label: "Supreme One Links", type: "text", required: true },
         { id: "prod_validation_results", label: "Post-migration Validation in Production", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "verified_in_prod", label: "Verified in Prod - Specific Regions (e.g., US-East, EU-West, APAC)", type: "text", required: true },
@@ -146,10 +146,10 @@ const MigrationQuestionnaireApp = () => {
       color: "bg-green-600",
       responsible: "Developer or PM",
       questions: [
-        { id: "migration_confirmed", label: "Migration Completion Confirmed?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "systems_operational", label: "All Systems Operational?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "stakeholders_notified", label: "Stakeholders Notified?", type: "radio", options: ["Yes", "No"], required: true },
-        { id: "pm_verification", label: "PM Verification Complete?", type: "radio", options: ["Yes", "No"], required: false },
+        { id: "migration_confirmed", label: "Migration Completion Confirmed?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "systems_operational", label: "All Systems Operational?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "stakeholders_notified", label: "Stakeholders Notified?", type: "radio", options: ["Yes", "No", "NA"], required: true },
+        { id: "pm_verification", label: "PM Verification Complete?", type: "radio", options: ["Yes", "No", "NA"], required: false },
         { id: "retrospective_conducted", label: "Retrospective Conducted?", type: "radio", options: ["Yes", "No", "NA"], required: true },
         { id: "lessons_learned", label: "Lessons Learned Documentation", type: "textarea", required: false }
       ]
@@ -157,7 +157,16 @@ const MigrationQuestionnaireApp = () => {
   ];
 
   const handleInputChange = (questionId: string, value: string) => {
-    setAnswers({ ...answers, [questionId]: value });
+    const newAnswers = { ...answers, [questionId]: value };
+    
+    // If Dry Run Script is set to "NA", automatically set all dry run related questions to "NA"
+    if (questionId === 'dry_run_script' && value === 'NA') {
+      newAnswers['dry_run_approved'] = 'NA';
+      newAnswers['dry_run_executed'] = 'NA';
+      newAnswers['dry_run_validation'] = 'NA';
+    }
+    
+    setAnswers(newAnswers);
   };
 
   const isStageSkipped = (stageIndex: number) => {
@@ -177,7 +186,8 @@ const MigrationQuestionnaireApp = () => {
     currentStageData.questions.forEach((question) => {
       if (question.required) {
         const answer = answers[question.id];
-        if (!answer || answer.trim() === '') {
+        // "NA" is considered a valid answer even for required fields
+        if (!answer || (answer !== 'NA' && answer.trim() === '')) {
           missingFields.push(question.label);
         }
       }
@@ -564,30 +574,66 @@ const MigrationQuestionnaireApp = () => {
                 </label>
 
                 {question.type === 'text' && (
-                  <input
-                    type="text"
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    value={answers[question.id] || ''}
-                    onChange={(e) => handleInputChange(question.id, e.target.value)}
-                  />
+                  <div>
+                    <input
+                      type="text"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      value={answers[question.id] === 'NA' ? '' : (answers[question.id] || '')}
+                      onChange={(e) => handleInputChange(question.id, e.target.value)}
+                      disabled={answers[question.id] === 'NA'}
+                    />
+                    <label className="flex items-center space-x-2 mt-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={answers[question.id] === 'NA'}
+                        onChange={(e) => handleInputChange(question.id, e.target.checked ? 'NA' : '')}
+                        className="w-4 h-4 text-purple-500"
+                      />
+                      <span className="text-sm text-gray-600">Not Applicable (NA)</span>
+                    </label>
+                  </div>
                 )}
 
                 {question.type === 'date' && (
-                  <input
-                    type="date"
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    value={answers[question.id] || ''}
-                    onChange={(e) => handleInputChange(question.id, e.target.value)}
-                  />
+                  <div>
+                    <input
+                      type="date"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      value={answers[question.id] === 'NA' ? '' : (answers[question.id] || '')}
+                      onChange={(e) => handleInputChange(question.id, e.target.value)}
+                      disabled={answers[question.id] === 'NA'}
+                    />
+                    <label className="flex items-center space-x-2 mt-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={answers[question.id] === 'NA'}
+                        onChange={(e) => handleInputChange(question.id, e.target.checked ? 'NA' : '')}
+                        className="w-4 h-4 text-purple-500"
+                      />
+                      <span className="text-sm text-gray-600">Not Applicable (NA)</span>
+                    </label>
+                  </div>
                 )}
 
                 {question.type === 'textarea' && (
-                  <textarea
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    rows={4}
-                    value={answers[question.id] || ''}
-                    onChange={(e) => handleInputChange(question.id, e.target.value)}
-                  ></textarea>
+                  <div>
+                    <textarea
+                      className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      rows={4}
+                      value={answers[question.id] === 'NA' ? '' : (answers[question.id] || '')}
+                      onChange={(e) => handleInputChange(question.id, e.target.value)}
+                      disabled={answers[question.id] === 'NA'}
+                    ></textarea>
+                    <label className="flex items-center space-x-2 mt-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={answers[question.id] === 'NA'}
+                        onChange={(e) => handleInputChange(question.id, e.target.checked ? 'NA' : '')}
+                        className="w-4 h-4 text-purple-500"
+                      />
+                      <span className="text-sm text-gray-600">Not Applicable (NA)</span>
+                    </label>
+                  </div>
                 )}
 
                 {question.type === 'radio' && question.options && (
